@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البوابة الرقمية الخدمية - النائب علي بدوي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 20px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .card-custom {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            background: white;
+        }
+        .btn-primary-custom {
+            background-color: #1e3c72;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 700;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        .btn-primary-custom:hover {
+            background-color: #2a5298;
+            transform: translateY(-2px);
+        }
+        .badge-sector {
+            background-color: #eef2f7;
+            color: #1e3c72;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر الرئيسي -->
+    <header class="header-bg text-center mb-4">
+        <div class="container">
+            <h1 class="fw-bold mb-2">البوابة الرقمية لخدمة مواطني الدائرة</h1>
+            <p class="fs-5 mb-0 opacity-90">تحت رعاية النائب / <strong>علي بدوي</strong></p>
+            <span class="badge bg-warning text-dark mt-3 px-3 py-2">خدمة وتواصل على مدار 24 ساعة</span>
+        </div>
+    </header>
+
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                
+                <!-- تبويبات التنقل -->
+                <ul class="nav nav-pills nav-justified mb-4 card-custom p-2" id="portalTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active fw-bold" id="submit-tab" data-bs-toggle="tab" data-bs-target="#submit-panel" type="button" role="tab">📝 تقديم طلب جديد</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-bold" id="track-tab" data-bs-toggle="tab" data-bs-target="#track-panel" type="button" role="tab">🔍 الاستعلام عن طلب</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="portalTabContent">
+                    
+                    <!-- نموذج تقديم الطلب -->
+                    <div class="tab-pane fade show active" id="submit-panel" role="tabpanel">
+                        <div class="card card-custom p-4">
+                            <h4 class="fw-bold mb-3 text-primary">استمارة تسجيل الطلبات والشكاوى</h4>
+                            <p class="text-muted small mb-4">يرجى إدخال البيانات بدقة لضمان سرعة المتابعة مع الجهات المختصة.</p>
+                            
+                            <form id="complaintForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">الاسم الثلاثي</label>
+                                        <input type="text" class="form-control" id="fullName" placeholder="أدخل اسمك كما هو بالبطاقة" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">الرقم القومي (14 رقم)</label>
+                                        <input type="text" class="form-control" id="nationalId" maxlength="14" pattern="\d{14}" placeholder="2990101XXXXXXXX" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">رقم الهاتف / الواتساب</label>
+                                        <input type="tel" class="form-control" id="phone" placeholder="010XXXXXXXX" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">المركز / القرية / المنطقة</label>
+                                        <input type="text" class="form-control" id="location" placeholder="اسم القرية أو الحي" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold">تصنيف الطلب</label>
+                                        <select class="form-select" id="sector" required>
+                                            <option value="" selected disabled>اختر القطاع المختص...</option>
+                                            <option value="صحة">صحة وعلاج على نفقة الدولة</option>
+                                            <option value="طرق ومرافق">طرق، مياه، وصرف صحي</option>
+                                            <option value="تعليم">تعليم ومدارس</option>
+                                            <option value="خدمات اجتماعية">تضامن اجتماعي ومعاشات</option>
+                                            <option value="تموين وزراعة">تموين وشؤون زراعية</option>
+                                            <option value="توظيف">طلبات عمل وتزكيات</option>
+                                            <option value="أخرى">طلب آخر / عام</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold">تفاصيل الطلب أو الشكوى</label>
+                                        <textarea class="form-control" id="details" rows="4" placeholder="اشرح الشكوى والجهة الموجه إليها الطلب بشكل مختصر..." required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold">إرفاق مستندات مؤيدة (إن وجدت)</label>
+                                        <input type="file" class="form-control" id="attachment">
+                                    </div>
+                                    <div class="col-12 text-center mt-4">
+                                        <button type="submit" class="btn btn-primary-custom w-100 fs-5">إرسال الطلب وحصول على رقم مرجعي</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- الاستعلام عن الطلب -->
+                    <div class="tab-pane fade" id="track-panel" role="tabpanel">
+                        <div class="card card-custom p-4 text-center">
+                            <h4 class="fw-bold mb-3 text-primary">متابعة حالة الشكوى</h4>
+                            <p class="text-muted small mb-4">أدخل الرقم القومي أو الرقم المرجعي للطلب للتحقق من التطورات.</p>
+                            
+                            <div class="input-group mb-3">
+                                <input type="text" id="trackInput" class="form-control form-control-lg" placeholder="أدخل الرقم القومي أو BADAWI-2026-XXXX">
+                                <button class="btn btn-primary-custom" type="button" onclick="trackTicket()">بحث</button>
+                            </div>
+                            <div id="trackResult" class="mt-4 text-start d-none"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تأكيد الإرسال -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-4" style="border-radius: 20px;">
+                <div class="modal-body">
+                    <div class="text-success mb-3 fs-1">✅</div>
+                    <h3 class="fw-bold text-success mb-2">تم استلام طلبك بنجاح!</h3>
+                    <p class="text-muted mb-3">شكرًا لتواصلك مع مكتب النائب علي بدوي. تم إصدار الرقم المرجعي لطلبك:</p>
+                    <div class="p-3 bg-light rounded-3 mb-3">
+                        <span class="fs-4 fw-bold text-primary" id="generatedTicket">BADAWI-2026-0001</span>
+                    </div>
+                    <p class="small text-muted mb-4">يرجى الاحتفاظ بهذا الرقم أو التقاط صورة للشاشة لمتابعة الطلب لاحقاً.</p>
+                    <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // التعامل مع تقديم النموذج وتوليد رقم مرجعي
+        document.getElementById('complaintForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // توليد رقم مرجعي تسلسلي عشوائي للإثبات
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const ticketId = `BADAWI-2026-${randomNum}`;
+            
+            document.getElementById('generatedTicket').innerText = ticketId;
+            
+            // إظهار نافذة التأكيد
+            const modal = new bootstrap.Modal(document.getElementById('successModal'));
+            modal.show();
+            
+            // إعادة ضبط النموذج
+            this.reset();
+        });
+
+        // محاكاة الاستعلام عن طلب
+        function trackTicket() {
+            const input = document.getElementById('trackInput').value.trim();
+            const resultDiv = document.getElementById('trackResult');
+            
+            if(!input) {
+                alert('يرجى إدخال الرقم المرجعي أو الرقم القومي أولاً');
+                return;
+            }
+            
+            resultDiv.classList.remove('d-none');
+            resultDiv.innerHTML = `
+                <div class="alert alert-info border-0 shadow-sm">
+                    <h6 class="fw-bold mb-2">نتيجة الاستعلام عن: ${input}</h6>
+                    <hr>
+                    <p class="mb-1"><strong>حالة الطلب:</strong> <span class="badge bg-warning text-dark">قيد المراجعة والدراسة</span></p>
+                    <p class="mb-1"><strong>الجهة الموجه إليها:</strong> مديرية الصحة / المحافظة</p>
+                    <p class="mb-0 text-muted small">تاريخ الإدخال: ${new Date().toLocaleDateString('ar-EG')}</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+  </html>
